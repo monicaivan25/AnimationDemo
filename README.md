@@ -1,2 +1,0 @@
-# AnimationDemo
-Android Animation demo
