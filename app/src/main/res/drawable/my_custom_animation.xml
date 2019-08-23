@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item android:drawable="@drawable/robo" android:duration="80"/>
+    <item android:drawable="@drawable/robo_1_" android:duration="80"/>
+    <item android:drawable="@drawable/robo_2_" android:duration="80"/>
+    <item android:drawable="@drawable/robo_3_" android:duration="80"/>
+    <item android:drawable="@drawable/robo_4_" android:duration="80"/>
+    <item android:drawable="@drawable/robo_5_" android:duration="80"/>
+    <item android:drawable="@drawable/robo_6_" android:duration="80"/>
+    <item android:drawable="@drawable/robo_7_" android:duration="80"/>
+    <item android:drawable="@drawable/robo_8_" android:duration="80"/>
+    <item android:drawable="@drawable/robo_9_" android:duration="80"/>
+
+</animation-list>
