@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class DrawableAnimationActivity extends AppCompatActivity {
 
     AnimationDrawable animationDrawable;
-    boolean started = false;
+    boolean started = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class DrawableAnimationActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.smiley_icon);
         imageView.setBackgroundResource(R.drawable.my_custom_animation);
         animationDrawable = (AnimationDrawable) imageView.getBackground();
+        animationDrawable.start();
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
