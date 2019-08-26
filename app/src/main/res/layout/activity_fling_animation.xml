@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:scrolling_image_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FlingAnimationActivity"
+    >
+
+    <com.q42.android.scrollingimageview.ScrollingImageView
+        android:id="@+id/cloud_background"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        scrolling_image_view:speed="1dp"
+        scrolling_image_view:src="@drawable/bg" />
+
+    <ImageView
+        android:id="@+id/cat_plane"
+        android:layout_width="wrap_content"
+        android:layout_height="361dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/cat_plane" />
+</RelativeLayout>

@@ -23,4 +23,13 @@
         android:layout_marginTop="2dp"
         android:text="Spring Animation"
         android:background="@color/colorPrimary"/>
+    <Button
+        android:id="@+id/fling_anim_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_below="@id/spring_anim_button"
+        android:layout_marginTop="2dp"
+        android:text="Fling Animation"
+        android:background="@color/colorPrimary"/>
 </RelativeLayout>

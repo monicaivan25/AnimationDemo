@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button drawableAnimationButton;
     Button springAnimationButton;
+    Button flingAnimationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawableAnimationButton = findViewById(R.id.drawable_anim_button);
         springAnimationButton = findViewById(R.id.spring_anim_button);
+        flingAnimationButton = findViewById(R.id.fling_anim_button);
 
         drawableAnimationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, SpringAnimationActivity.class));
+            }
+        });
+        flingAnimationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, FlingAnimationActivity.class));
             }
         });
     }

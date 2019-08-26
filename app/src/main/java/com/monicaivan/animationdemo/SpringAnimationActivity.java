@@ -71,8 +71,6 @@ public class SpringAnimationActivity extends AppCompatActivity {
 
     }
 
-
-
     private SpringAnimation createSpringAnimation(View view,
                                                   DynamicAnimation.ViewProperty property,
                                                   Float finalPosition, Float stiffness, Float dampingRatio){
