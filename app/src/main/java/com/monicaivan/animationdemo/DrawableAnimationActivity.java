@@ -23,7 +23,7 @@ public class DrawableAnimationActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-        ImageView imageView = findViewById(R.id.smiley_icon);
+        ImageView imageView = findViewById(R.id.imageView);
         imageView.setBackgroundResource(R.drawable.my_custom_animation);
         animationDrawable = (AnimationDrawable) imageView.getBackground();
         animationDrawable.start();

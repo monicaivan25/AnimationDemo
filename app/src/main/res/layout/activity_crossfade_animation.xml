@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CrossfadeAnimationActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#FFF"
+        android:padding="20dp"
+        android:textColor="#30a000"
+        android:text="Show me the secret"
+        android:onClick="crossfade"/>
+
+    <ImageView
+        android:id="@+id/cross_image_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="#30a000"/>
+
+
+    <ImageView
+        android:id="@+id/cross_image_2"
+        android:layout_width="match_parent"
+        android:layout_height="362dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/pepe" />
+
+</RelativeLayout>
