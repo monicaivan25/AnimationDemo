@@ -41,4 +41,13 @@
         android:layout_marginTop="2dp"
         android:text="Crossfade Animation"
         android:background="@color/colorPrimary"/>
+    <Button
+        android:id="@+id/card_flip_anim_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_below="@id/crossfade_anim_button"
+        android:layout_marginTop="2dp"
+        android:text="Card flip Animation"
+        android:background="@color/colorPrimary"/>
 </RelativeLayout>

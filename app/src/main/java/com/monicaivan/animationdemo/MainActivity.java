@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     Button springAnimationButton;
     Button flingAnimationButton;
     Button crossFadeAnimationButton;
+    Button cardFlipAnimationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         springAnimationButton = findViewById(R.id.spring_anim_button);
         flingAnimationButton = findViewById(R.id.fling_anim_button);
         crossFadeAnimationButton = findViewById(R.id.crossfade_anim_button);
+        cardFlipAnimationButton = findViewById(R.id.card_flip_anim_button);
 
         drawableAnimationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, CrossfadeAnimationActivity.class));
+            }
+        });
+        cardFlipAnimationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, CardFlipAnimationActivity.class));
             }
         });
     }

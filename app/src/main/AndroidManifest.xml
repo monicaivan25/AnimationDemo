@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CrossfadeAnimationActivity"></activity>
+        <activity android:name=".CardFlipAnimationActivity"></activity>
+        <activity android:name=".CrossfadeAnimationActivity" />
         <activity android:name=".FlingAnimationActivity" />
         <activity android:name=".SpringAnimationActivity" />
         <activity android:name=".DrawableAnimationActivity" />
