@@ -129,3 +129,202 @@ imageView.setOnTouchListener(new View.OnTouchListener() {
     }
 });
 ```
+## Crossfade Animation
+[Official documentation](https://developer.android.com/training/animation/reveal-or-hide-view.html#Crossfade)
+1. In your activity's layout file add the two views that you want to interchange:
+```xml
+<ImageView
+    android:id="@+id/cross_image_1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:background="#30a000"/>
+<ImageView
+    android:id="@+id/cross_image_2"
+    android:layout_width="match_parent"
+    android:layout_height="362dp"
+    android:layout_alignParentBottom="true"
+    android:src="@drawable/pepe" />
+```
+2. Set the visibility of the background view to View.GONE:
+```java
+foreground = findViewById(R.id.cross_image_1);
+background = findViewById(R.id.cross_image_2);
+background.setVisibility(View.GONE);
+```
+3. To crossfade, set the transparency of the background view to 0 and make it visible. Using .animate(), change the transparency of the background view to 1, and the transparency of the foreground view to 0:
+```java
+background.setAlpha(0f);
+background.setVisibility(View.VISIBLE);
+background.animate()
+        .alpha(1f)
+        .setDuration(longAnimationDuration)
+        .setListener(null);
+foreground.animate()
+        .alpha(0f)
+        .setDuration(longAnimationDuration)
+        .setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                foreground.setVisibility(View.GONE);
+            }
+        });
+```
+## Card Flip Animation
+[Official documentation](https://developer.android.com/training/animation/reveal-or-hide-view.html#CardFlip)
+1. Create four animator .xml files, two describing the animation to the left and two the animation to the right:
+card_flip_left_in.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Before rotating, immediately set the alpha to 0. -->
+    <objectAnimator
+        android:valueFrom="1.0"
+        android:valueTo="0.0"
+        android:propertyName="alpha"
+        android:duration="0" />
+
+    <!-- Rotate. -->
+    <objectAnimator
+        android:valueFrom="-180"
+        android:valueTo="0"
+        android:propertyName="rotationY"
+        android:interpolator="@android:interpolator/accelerate_decelerate"
+        android:duration="@integer/card_flip_time_full" />
+
+    <!-- Half-way through the rotation (see startOffset), set the alpha to 1. -->
+    <objectAnimator
+        android:valueFrom="0.0"
+        android:valueTo="1.0"
+        android:propertyName="alpha"
+        android:startOffset="@integer/card_flip_time_half"
+        android:duration="1" />
+</set>
+```
+card_flip_left_out.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Rotate. -->
+    <objectAnimator
+        android:valueFrom="0"
+        android:valueTo="180"
+        android:propertyName="rotationY"
+        android:interpolator="@android:interpolator/accelerate_decelerate"
+        android:duration="@integer/card_flip_time_full" />
+
+    <!-- Half-way through the rotation (see startOffset), set the alpha to 0. -->
+    <objectAnimator
+        android:valueFrom="1.0"
+        android:valueTo="0.0"
+        android:propertyName="alpha"
+        android:startOffset="@integer/card_flip_time_half"
+        android:duration="1" />
+</set>
+```
+card_flip_right_in.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Before rotating, immediately set the alpha to 0. -->
+    <objectAnimator
+        android:valueFrom="1.0"
+        android:valueTo="0.0"
+        android:propertyName="alpha"
+        android:duration="0" />
+
+    <!-- Rotate. -->
+    <objectAnimator
+        android:valueFrom="180"
+        android:valueTo="0"
+        android:propertyName="rotationY"
+        android:interpolator="@android:interpolator/accelerate_decelerate"
+        android:duration="@integer/card_flip_time_full" />
+
+    <!-- Half-way through the rotation (see startOffset), set the alpha to 1. -->
+    <objectAnimator
+        android:valueFrom="0.0"
+        android:valueTo="1.0"
+        android:propertyName="alpha"
+        android:startOffset="@integer/card_flip_time_half"
+        android:duration="1" />
+</set>
+```
+card_flip_right_out.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Rotate. -->
+    <objectAnimator
+        android:duration="@integer/card_flip_time_full"
+        android:interpolator="@android:interpolator/accelerate_decelerate"
+        android:propertyName="rotationY"
+        android:valueFrom="0"
+        android:valueTo="-180" />
+
+    <!-- Half-way through the rotation (see startOffset), set the alpha to 0. -->
+    <objectAnimator
+        android:duration="1"
+        android:propertyName="alpha"
+        android:startOffset="@integer/card_flip_time_half"
+        android:valueFrom="1.0"
+        android:valueTo="0.0" />
+</set>
+```
+2. Create the main card flip activity that extends FragmentActivity, and write the two fragments:
+```java
+public class CardFlipAnimationActivity extends FragmentActivity {
+...
+    public static class CardFrontFragment extends Fragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment_card_front, container, false);
+        }
+    }
+    /**
+     * A fragment representing the back of the card.
+     */
+    public static class CardBackFragment extends Fragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment_card_back, container, false);
+        }
+    }
+}
+```
+3. Create an empty RelativeLayout in your CardFlipAnimationActivity's layout file:
+```xml
+<RelativeLayout
+    android:id="@+id/activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+```
+4. Create your fragment's layout files.
+5. Set the CardFrontFragment as the starting fragment:
+```java
+getSupportFragmentManager()
+        .beginTransaction()
+        .add(R.id.activity_layout, new CardFrontFragment())
+        .commit();
+```
+6. Change fragments by flipping them:
+```java
+if (showingBack) {
+            getSupportFragmentManager().popBackStack();
+            showingBack = false;
+            return;
+}
+showingBack = true;
+
+getSupportFragmentManager().beginTransaction()
+        .setCustomAnimations(
+            R.animator.card_flip_right_in,
+            R.animator.card_flip_right_out,
+            R.animator.card_flip_left_in,
+            R.animator.card_flip_left_out)
+        .replace(R.id.activity_layout, new CardBackFragment())
+        .addToBackStack(null)
+        .commit();
+ ```
